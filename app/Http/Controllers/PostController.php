@@ -8,8 +8,8 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
-    public function index(post $podt)
+    public function myshow(post $post)
     {
-        return view('post/index')->with(['posts' => $post->get()]);
+        return view('posts.myshow')->with(['posts' => $post->getPaginateByLimit()]);
     }
 }

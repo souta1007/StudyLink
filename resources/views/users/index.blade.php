@@ -9,12 +9,7 @@
     </head>
     <body class="antialiased">
         
-        <h1>自分の投稿</h1>
-        <div class='posts'>
-            <div class='post'>
-                <h2 class='title'>Title</h2>
-                <p class='body'>This is a sample body.</p>
-            </div>
-        </div>
+        <h1>Home</h1>
+        <a href="posts/myshow">[自分の投稿]</a>
     </body>
 </html>

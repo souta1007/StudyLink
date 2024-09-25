@@ -9,7 +9,10 @@
     </head>
     <body class="antialiased">
         
+        <x-app-layout>
         <h1>Home</h1>
+        <p>ログインユーザー：{{ Auth::user()->name }}</p>
         <a href="posts/myshow">[自分の投稿]</a>
+        </x-app-layout>
     </body>
 </html>

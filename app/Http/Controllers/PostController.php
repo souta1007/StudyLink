@@ -10,6 +10,7 @@ class PostController extends Controller
 {
     public function myshow(post $post)
     {
-        return view('posts.myshow')->with(['posts' => $post->getPaginateByLimit()]);
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 }
+?>

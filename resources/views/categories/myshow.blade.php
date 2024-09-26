@@ -10,8 +10,6 @@
     <body class="antialiased">
         <x-app-layout>
             
-        <h1>自分の投稿</h1>
-        <a href="/posts/create">[作成]</a>
         <div class='posts'>
             @foreach ($posts as $post)
             <div class='post'>
@@ -21,7 +19,7 @@
                 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
+                    <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
                 </form>
             </div>
             @endforeach
@@ -36,6 +34,9 @@
                 }
             }
         </script>
+        <div class='footer'>
+            <a href="/">戻る</a>
+        </div>
         </x-app-layout>
     </body>
 </html>

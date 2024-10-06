@@ -12,7 +12,8 @@
         <x-app-layout>
         <h1>Home</h1>
         <p>ログインユーザー：{{ Auth::user()->name }}</p>
-        <a href="posts/myshow">[自分の投稿]</a>
+        <a href="posts/allshow">[みんなの投稿]</a>
+        <a href="user/myshow">[自分の投稿]</a>
         </x-app-layout>
     </body>
 </html>

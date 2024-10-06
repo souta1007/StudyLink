@@ -14,8 +14,7 @@
         <a href="/posts/create">[作成]</a>
         <div class='own_posts'>
             @foreach ($own_posts as $post)
-            <div class='own_post'>
-                <h2 class=name>投稿者:{{$post->user->name}}</h2>
+            <div class='post'>
                 <a href="/posts/{{ $post->id }}"><h3 class ='title'>タイトル:{{ $post->title }}</h3></a>
                 <a href="/categories/{{ $post->category->id }}">カテゴリー:{{ $post->category->name }}</a>
                 <p class='body'>内容:{{ $post->body }}</p>
@@ -24,9 +23,17 @@
                     @method('DELETE')
                     <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
                 </form>
-                <a href="/responces/responces">[返信]</a>
             </div>
-            @endforeach
+            <div class='responces'>
+                <h4>返信一覧</h4>
+                @foreach ($post->responces as $responce)
+                <div class='responce'>
+                    <p>返信者: {{ $responce->user->name }}</p>
+                    <p>内容: {{ $responce->comment }}</p>
+                </div>
+                @endforeach
+            </div>
+        @endforeach
         </div>
         <div class='paginate'>{{ $own_posts->links()}}</div>
         <script>

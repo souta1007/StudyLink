@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function myshow(User $user)
     {
-        return view('User.myshow')->with(['own_posts' => $user->getOwnPaginateByLimit()]);
+        return view('user.myshow')->with(['own_posts' => $user->getOwnPaginateByLimit()]);
     }
 }
 ?>

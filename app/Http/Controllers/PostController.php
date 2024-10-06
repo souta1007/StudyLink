@@ -16,9 +16,9 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post]);
     }
     
-    public function myshow(Post $post)
+    public function allshow(Post $post)
     {
-        return view('posts.myshow')->with([
+        return view('posts.allshow')->with([
             'posts' => $post->getPaginateByLimit(5),
             ]);
     }
@@ -39,7 +39,7 @@ class PostController extends Controller
     public function delete(Post $post)
     {
         $post->delete();
-        return redirect('/posts/myshow/');
+        return redirect('/user/myshow/');
     }
 }
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ResponceController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,17 +23,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/user', [UserController::class,'myshow'])->middleware("auth");
+Route::get('/user/myshow', [UserController::class,'myshow'])->middleware("auth");
 
 Route::controller(PostController::class)->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('index');
-    Route::get('/posts/myshow', 'myshow')->name('myshow');
+    Route::get('/posts/allshow', 'allshow')->name('allshow');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
-    Route::get('/posts/{post}', 'myshow')->name('myshow');
+    Route::get('/posts/{post}', 'allshow')->name('allshow');
     Route::delete('/posts/{post}', 'delete')->name('delete');
 });
 
-Route::get('/categories/{category}', [CategoryController::class,'myshow'])->middleware("auth");
+Route::get('/categories/{category}', [CategoryController::class,'allshow'])->middleware("auth");
 
 Route::controller(ResponceController::class)->middleware('auth')->group(function () {
     Route::post('/responces/{post}', 'reply')->name('reply');

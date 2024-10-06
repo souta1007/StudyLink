@@ -7,9 +7,9 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index(Category $category)
+    public function myshow(Category $category)
     {
-        return view('categories.index')->with(['posts' => $category->getByCategory()]);
+        return view('categories.myshow')->with(['posts' => $category->getByCategory()]);
     }
 }
 ?>

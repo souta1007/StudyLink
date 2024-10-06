@@ -11,7 +11,7 @@
         
         <x-app-layout>
         <h1>投稿作成</h1>
-        <form action="/posts" method="POST">
+        <form action="{{ route('store') }}" method="POST">
             @csrf
             <div class="title">
                 <h2>Title</h2>

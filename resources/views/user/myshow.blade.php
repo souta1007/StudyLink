@@ -12,9 +12,9 @@
             
         <h1>自分の投稿</h1>
         <a href="/posts/create">[作成]</a>
-        <div class='posts'>
-            @foreach ($posts as $post)
-            <div class='post'>
+        <div class='own_posts'>
+            @foreach ($own_posts as $post)
+            <div class='own_post'>
                 <h2 class=name>投稿者:{{$post->user->name}}</h2>
                 <a href="/posts/{{ $post->id }}"><h3 class ='title'>タイトル:{{ $post->title }}</h3></a>
                 <a href="/categories/{{ $post->category->id }}">カテゴリー:{{ $post->category->name }}</a>
@@ -24,21 +24,11 @@
                     @method('DELETE')
                     <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
                 </form>
-                <button type="button"><a href="/responces/{{ $post->id}}/responce/">返信</a></button>
-            </div>
-            <div class='responces'>
-                <h4>返信一覧</h4>
-                @foreach ($post->responces as $responce)
-                <div class='responce'>
-                    <p>返信者: {{ $responce->user->name }}</p>
-                    <p>内容: {{ $responce->comment }}</p>
-                </div>
-                @endforeach
-            </div>
+                <a href="/responces/responces">[返信]</a>
             </div>
             @endforeach
         </div>
-        <div class='paginate'>{{ $posts->links()}}</div>
+        <div class='paginate'>{{ $own_posts->links()}}</div>
         <script>
             function deletePost(id){
                 'use strict'

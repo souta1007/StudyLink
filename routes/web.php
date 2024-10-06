@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ResponceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/user', [UserController::class,'myshow'])->middleware("auth");
+
 Route::controller(PostController::class)->middleware('auth')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/posts/myshow', 'myshow')->name('myshow');
@@ -30,6 +33,11 @@ Route::controller(PostController::class)->middleware('auth')->group(function () 
 });
 
 Route::get('/categories/{category}', [CategoryController::class,'myshow'])->middleware("auth");
+
+Route::controller(ResponceController::class)->middleware('auth')->group(function () {
+    Route::post('/responces/{post}', 'reply')->name('reply');
+    Route::get('/responces/{post}/responce', 'responce')->name('responce');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

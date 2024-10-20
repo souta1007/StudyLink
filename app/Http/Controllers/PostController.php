@@ -18,9 +18,17 @@ class PostController extends Controller
     
     public function allshow(Post $post)
     {
+        $posts = $post->with('user')->Paginate(5);
+        
         return view('posts.allshow')->with([
-            'posts' => $post->getPaginateByLimit(5),
+            'posts' => $posts,
             ]);
+            
+    }
+    
+    public function detail(Post $post)
+    {
+        return view('posts.detail')->with(['post' => $post]);
     }
     
     public function create(Category $category)
@@ -32,8 +40,13 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $input_post += ['user_id' => $request->user()->id];
+        if ($request->hasFile('post.image')){
+            $image = $request->file('post.image');
+            $path = $iamge->store('image', 'public');
+            $input_post['image_path'] = $path;
+        }
         $post->fill($input_post)->save();
-        return redirect('/posts/' . $post->id);
+        return redirect('/user/myshow' . $post->id);
     }
     
     public function delete(Post $post)

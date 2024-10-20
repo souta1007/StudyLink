@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class FollowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'post.title' => 'required|string|max:100',
-            'post.body' => 'required|string|max:4000',
-            'post.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'follow.followed' => 'required|exists:users,id',
         ];
     }
 }

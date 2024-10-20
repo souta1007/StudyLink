@@ -15,12 +15,21 @@ class Post extends Model
         'title',
         'body',
         'category_id',
-        'user_id'
+        'user_id'.
+        'image_path'
     ];
         
     public function getPaginateByLimit(int $limit_count = 5)
     {
         return $this::with('user')->with('category')->orderBy( 'updated_at', 'DESC' )->Paginate($limit_count);
+    }
+    
+    public function getImageUrlAttribute()
+    {
+        if ($this->image_path) {
+            return asset('storage/' . $this->image_path); 
+        }
+        return null;
     }
     
     public function category()

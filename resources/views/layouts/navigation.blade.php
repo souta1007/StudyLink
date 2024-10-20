@@ -15,8 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                        {{ __('home') }}
+                    <x-nav-link :href="route('users.myshow')" :active="request()->routeIs('myshow')">
+                        {{ __('自分の投稿') }}
+                    </x-nav-link>
+                     <x-nav-link :href="route('posts.create')" :active="request()->routeIs('create')">
+                        {{ __('投稿作成') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('posts.allshow')" :active="request()->routeIs('allshow')">
+                        {{ __('みんなの投稿') }}
                     </x-nav-link>
                 </div>
             </div>

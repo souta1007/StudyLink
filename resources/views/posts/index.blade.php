@@ -12,6 +12,8 @@
         <x-app-layout>
         <h1>Home</h1>
         <p>ログインユーザー：{{ Auth::user()->name }}</p>
+        <a href="follows/followshow">フォロー中：</a>
+        <a href="follows/addfollow">[フォローする]</a>
         <a href="posts/allshow">[みんなの投稿]</a>
         <a href="user/myshow">[自分の投稿]</a>
         </x-app-layout>

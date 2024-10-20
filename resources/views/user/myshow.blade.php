@@ -17,6 +17,7 @@
             <div class='post'>
                 <a href="/posts/{{ $post->id }}"><h3 class ='title'>タイトル:{{ $post->title }}</h3></a>
                 <a href="/categories/{{ $post->category->id }}">カテゴリー:{{ $post->category->name }}</a>
+                <img src="{{ $post->image_url }}" alt="Post Image">
                 <p class='body'>内容:{{ $post->body }}</p>
                 <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                     @csrf

@@ -26,6 +26,9 @@
                     @endforeach
                 </select>
             </div>
+            <div class="image">
+                <input type="file" name="post[image]">
+            </div>
             <div class="body">
                 <h2>Body</h2>
                 <textarea name=post[body] placeholder="質問したいことを書いてください">{{ old( 'post.body' )}}</textarea>
